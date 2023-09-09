@@ -86,10 +86,6 @@ class AuthController extends Controller
             'password' => bcrypt($validated['password']),
             'pathuserpicture' => $webp_image->basePath(),
         ]);
-
-
-
-
         if (!$hasil) {
             return redirect()->back()->withErrors(['msg' => 'Gagal Update']);
         } else

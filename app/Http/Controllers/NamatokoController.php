@@ -13,7 +13,8 @@ class NamatokoController extends Controller
      */
     public function index()
     {
-        //
+        $data = namatoko::all();
+        return view('pages.toko.index', compact('data'));
     }
 
     /**
@@ -29,7 +30,8 @@ class NamatokoController extends Controller
      */
     public function store(StorenamatokoRequest $request)
     {
-        //
+        namatoko::create($request->all());
+        return response()->json(['success' => 'Toko successfully added']);
     }
 
     /**
@@ -37,7 +39,7 @@ class NamatokoController extends Controller
      */
     public function show(namatoko $namatoko)
     {
-        //
+        return response()->json($namatoko);
     }
 
     /**
@@ -61,6 +63,8 @@ class NamatokoController extends Controller
      */
     public function destroy(namatoko $namatoko)
     {
-        //
+        $tempnamatoko = $namatoko->namatoko;
+        $namatoko->delete();
+        return redirect()->route('toko')->with(['success' => $tempnamatoko . ' successfully deleted!']);
     }
 }

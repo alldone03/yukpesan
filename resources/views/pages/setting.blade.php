@@ -21,6 +21,7 @@
     <script src="{{ asset('assets/static/js/initTheme.js') }}"></script>
     @extends('pages.layout')
 @section('layout-content')
+
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">

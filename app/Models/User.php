@@ -17,13 +17,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'username',
-        'email',
-        'password',
-        'roles',
-        'pathuserpicture',
-    ];
+    // protected $fillable = [
+    //     'username',
+    //     'email',
+    //     'password',
+    //     'roles',
+    //     'pathuserpicture',
+    // ];
+
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -34,10 +36,10 @@ class User extends Authenticatable
         'password',
         // 'remember_token',
     ];
-    public function getRole()
-    {
-        return $this->hasOne(roles::class, 'id', 'roles');
-    }
+    // public function getRole()
+    // {
+    //     return $this->hasOne(User::class, "id", 'roles');
+    // }
 
     /**
      * The attributes that should be cast.
