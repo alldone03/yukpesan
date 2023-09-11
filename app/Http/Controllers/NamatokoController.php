@@ -47,7 +47,7 @@ class NamatokoController extends Controller
      */
     public function edit(namatoko $namatoko)
     {
-        //
+        return response()->json($namatoko);
     }
 
     /**
@@ -55,7 +55,9 @@ class NamatokoController extends Controller
      */
     public function update(UpdatenamatokoRequest $request, namatoko $namatoko)
     {
-        //
+
+        $namatoko->update($request->all());
+        return response()->json(['success' => 'Toko successfully update']);
     }
 
     /**

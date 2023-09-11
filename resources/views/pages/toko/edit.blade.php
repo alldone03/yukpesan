@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel33">
-                    Add Toko
+                    Edit Toko
                 </h4>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -15,25 +15,24 @@
                     </svg>
                 </button>
             </div>
-            <form action="#">
+            <iframe name="frame2" style="display: none;"></iframe>
+            <form id="updateToko" target="frame2">
+                <input type="hidden" name="idtoko" id="idtoko" value="">
                 <div class="modal-body">
-                    <label for="email">Nama Toko: </label>
+                    <label for="namatoko">Nama Toko: </label>
                     <div class="form-group">
-                        <input id="email" type="text" placeholder="Email Address" class="form-control">
-                    </div>
-                    <label for="password">Password: </label>
-                    <div class="form-group">
-                        <input id="password" type="password" placeholder="Password" class="form-control">
+                        <input id="namatoko" name="namatoko" type="text" placeholder="Joder Ka Dhani"
+                            class="form-control" value="" required>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" id="update" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Update</span>
+                    </button>
                     <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Close</span>
-                    </button>
-                    <button type="button" class="btn btn-primary ms-1" data-bs-dismiss="modal">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">login</span>
                     </button>
                 </div>
             </form>

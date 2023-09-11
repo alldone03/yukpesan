@@ -33,7 +33,6 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Close</span>
                     </button>
-
                 </div>
             </form>
         </div>

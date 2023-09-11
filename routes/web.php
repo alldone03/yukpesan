@@ -56,6 +56,8 @@ Route::middleware('auth')->group(
             function () {
                 Route::get('/', 'index')->name('toko');
                 Route::post('/', 'store')->name('toko/add');
+                Route::get('/edit/{namatoko}', 'edit')->name('toko/edit');
+                Route::put('/update/{namatoko}', 'update')->name('toko/update');
                 Route::delete('/delete/{namatoko}', 'destroy')->name('toko/delete');
             }
         );

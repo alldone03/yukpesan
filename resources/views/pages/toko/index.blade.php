@@ -20,8 +20,8 @@
         <link rel="stylesheet" href="{{ asset('assets/compiled/css/app-dark.css') }}" />
     @endpush
     @push('scripts')
-        @include('pages.toko.add')
         @include('pages.toko.edit')
+        @include('pages.toko.add')
         <script src="{{ asset('assets/static/js/components/dark.js') }}"></script>
         <script src="{{ asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
         <script src="{{ asset('assets/compiled/js/app.js') }}"></script>
@@ -74,33 +74,55 @@
                                 window.location.reload();
 
                             }, 2000);
-
-
                         }
 
                     })
-                })
+                });
                 $('.edit').on("click", function(e) {
                     e.preventDefault()
                     var id = $(this).attr('data-bs-id');
+                    console.log(id);
+
                     $.ajax({
-                        url: "/master/gedung/edit/" + id,
+                        url: "{{ url()->current() }}/edit/" + id,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
-                            $('#id_gedung').val(data.id_gedung);
-                            $('#kd_gedung').val(data.kd_gedung);
-                            $('#nm_gedung').val(data.nm_gedung);
-                            $('#jml_lantai').val(data.jml_lantai);
-                            $('#p_gedung').val(data.p_gedung);
-                            $('#t_gedung').val(data.t_gedung);
-                            $('#l_gedung').val(data.l_gedung);
-                            $('#ket_gedung').val(data.ket_gedung);
-                            $('input[id="stts_gedung"][value="' + data.stts_gedung + '"]').prop(
-                                'checked', true);
-                            $('#editGedung').modal('show');
+
+                            $('#idtoko').val(data.id);
+                            $('#namatoko').val(data.namatoko);
+                            $('#inlineFormEdit').modal('show');
                         }
                     });
+                });
+                $('#update').on("click", function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: "PUT",
+                        data: $('#updateToko').serialize(),
+                        url: '{{ url()->current() }}/update/'.concat($('#idtoko')
+                            .val()),
+                        dataType: "json",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(data) {
+
+                            Toastify({
+                                text: data.success,
+                                duration: 900,
+                                close: true,
+                                gravity: "top",
+                                position: "right",
+                                backgroundColor: "#4fbe87",
+                            }).showToast()
+                            setTimeout(() => {
+                                window.location.reload();
+
+                            }, 2000);
+                        }
+
+                    })
                 });
             })
         </script>
