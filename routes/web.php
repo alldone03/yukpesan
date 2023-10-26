@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NamatokoController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,15 @@ Route::middleware('auth')->group(
                 Route::get('/edit/{namatoko}', 'edit')->name('toko/edit');
                 Route::put('/update/{namatoko}', 'update')->name('toko/update');
                 Route::delete('/delete/{namatoko}', 'destroy')->name('toko/delete');
+            }
+        );
+        Route::controller(MenuController::class)->prefix('menu')->group(
+            function () {
+                Route::get('/', 'index')->name('menu');
+                Route::post('/', 'store')->name('menu/add');
+                Route::get('/edit/{menu}', 'edit')->name('menu/edit');
+                Route::put('/update/{menu}', 'update')->name('menu/update');
+                Route::delete('/delete/{menu}', 'destroy')->name('menu/delete');
             }
         );
     }

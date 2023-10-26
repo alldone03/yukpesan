@@ -11,4 +11,10 @@
             <span>Toko</span>
         </a>
     </li>
+    <li class="sidebar-item @if (Request::path() == 'menu') active @endif">
+        <a href="{{ route('menu') }}" class="sidebar-link ">
+            <i class="bi bi-grid-fill"></i>
+            <span>Menu</span>
+        </a>
+    </li>
 @endif

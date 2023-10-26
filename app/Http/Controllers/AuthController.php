@@ -69,6 +69,7 @@ class AuthController extends Controller
     public function updateUser()
     {
         $validated = request()->validate([
+            'name' => 'required',
             'username' => 'required',
             'password' => 'required',
             'file' => 'image|mimes:jpeg,png,jpg,gif,svg',
